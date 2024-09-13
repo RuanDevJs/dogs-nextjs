@@ -8,6 +8,8 @@
  </li>
 </ul>
 
+![image](https://github.com/user-attachments/assets/93665958-df8a-4194-968d-6eba817685a1)
+
 <h3> Technologies Stacks </h3>
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
