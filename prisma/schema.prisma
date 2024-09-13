@@ -23,6 +23,19 @@ model User {
   @@map("users")
 }
 
+model Picture {
+  id          String @id @default(uuid())
+  title       String
+  picture_url String
+
+  username_id String
+  username    String
+
+  createdAt DateTime @default(now())
+
+  @@map("pictures")
+}
+
 model Account {
   id                  String  @id @default(cuid())
   userId              String

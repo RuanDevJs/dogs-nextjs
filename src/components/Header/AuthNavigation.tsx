@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { At } from "phosphor-react";
 
+
 interface AuthenticatedNavigation {
   user: {
     id: string;
