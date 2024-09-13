@@ -8,8 +8,6 @@
  </li>
 </ul>
 
-![image](https://github.com/user-attachments/assets/93665958-df8a-4194-968d-6eba817685a1)
-
 <h3> Technologies Stacks </h3>
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
@@ -18,6 +16,8 @@
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+
+![image](https://github.com/user-attachments/assets/93665958-df8a-4194-968d-6eba817685a1)
 
 <h3> Overview 🚀 </h3>
 <p>
