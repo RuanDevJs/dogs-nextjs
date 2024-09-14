@@ -14,7 +14,7 @@ const inter = Spectral({
 });
 
 export const metadata: Metadata = {
-  title: "Dogs",
+  title: "Dogs | Criado por @ruandevjs",
   description: "Site criado inteiramente por @ruandevjs",
 };
 

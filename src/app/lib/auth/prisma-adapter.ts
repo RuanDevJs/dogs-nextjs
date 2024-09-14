@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 export function PrismaAdapter(): Adapter {
   return {
     async createUser(user) {
-      console.log("CHAMOU");
       const cookieStorage = cookies();
       const userIdFromCookies = cookieStorage.get("@dogs-social-login:userId");
 

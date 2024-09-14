@@ -19,6 +19,7 @@ model User {
   created_at DateTime  @default(now())
   account    Account[]
   session    Session[]
+  Picture    Picture[]
 
   @@map("users")
 }
@@ -27,9 +28,10 @@ model Picture {
   id          String @id @default(uuid())
   title       String
   picture_url String
-
-  username_id String
   username    String
+
+  user_id String?
+  User    User?   @relation(fields: [user_id], references: [id])
 
   createdAt DateTime @default(now())
 
