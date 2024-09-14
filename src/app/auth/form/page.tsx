@@ -1,16 +1,45 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import {
-  ArrowCircleRight,
-  Dog,
-  PawPrint,
-  Plus,
-  PlusCircle,
-} from "phosphor-react";
+import { Dog, PawPrint } from "phosphor-react";
+
+import * as firebaseStorage from "firebase/storage";
+import { ChangeEvent, useRef, useState } from "react";
+import { firebaseApp } from "@/app/services/firebase";
 
 export default function Form() {
+  const [previewImage, setPreviewImage] = useState<null | string>(null);
+  const [fileRef, setFileRef] = useState<null | File>(null);
+
   const session = useSession();
+  const sessionUser = session.data?.user;
+
+  function createStorageUrl(fileName: string) {
+    const storageURL = `/users/${sessionUser?.id}/pictures/${fileName}`;
+    return storageURL;
+  }
+
+  async function setFileInFirebase() {
+    if (fileRef !== null) {
+      const storageURL = createStorageUrl(fileRef.name);
+      const storage = firebaseStorage.getStorage(firebaseApp);
+      const storageRef = firebaseStorage.ref(storage, storageURL);
+
+      const response = await firebaseStorage.uploadBytes(storageRef, fileRef);
+    }
+  }
+
+  async function onSelectPicture(event: ChangeEvent<HTMLInputElement>) {
+    const fileFromInput = event.target.files;
+
+    if (fileFromInput !== null) {
+      const pickedImage = fileFromInput[0];
+      const imageUrl = URL.createObjectURL(pickedImage);
+
+      setPreviewImage(imageUrl);
+      setFileRef(pickedImage);
+    }
+  }
 
   return (
     <div className="max-w-[50rem] mt-12 mx-auto  relative">
@@ -39,8 +68,22 @@ export default function Form() {
               Escolher minha foto <Dog size={18} weight="regular" />
             </span>
           </label>
-          <input type="file" className="hidden" id="file" />
+          <input
+            type="file"
+            className="hidden"
+            id="file"
+            onChange={onSelectPicture}
+          />
         </div>
+        {previewImage && (
+          <div className="mt-3 w-2/3">
+            <img
+              src={previewImage}
+              alt=""
+              className="w-full h-full object-cover rounded"
+            />
+          </div>
+        )}
         <button
           type="submit"
           className="font-helvetica font-normal text-base text-zinc-50 bg-[#FFBB11] w-2/3 flex justify-center items-center px-4 py-3 mt-5 rounded hover:bg-yellow-400 ease-in-out duration-150 transition gap-2 disabled:bg-zinc-300 disabled:cursor-not-allowed"
