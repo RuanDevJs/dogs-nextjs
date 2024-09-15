@@ -17,18 +17,18 @@
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 
-![image](https://github.com/user-attachments/assets/93665958-df8a-4194-968d-6eba817685a1)
+![image](https://github.com/user-attachments/assets/5dbdbd94-babd-45a5-8251-4e47b1036fc2)
 
 <h3> Overview 🚀 </h3>
 <p>
-<i>This project is a modern web application built using React.js, TypeScript, and TailwindCSS. It serves as a platform for me to enhance my front-end development skills, particularly in React.js, TypeScript, and TailwindCSS, as well as in designing responsive, aesthetically pleasing UI components.</i>
+<i>This project is a modern web application built using Next.js, TypeScript, and TailwindCSS. It serves as a platform for me to enhance my front-end development skills, particularly in React.js, TypeScript, and TailwindCSS, as well as in designing responsive, aesthetically pleasing UI components.</i>
 </p>
 
 <h3>Purpose</h3>
 <p><i>The main goal of this project is to improve my proficiency in front-end technologies. By working on this project, I aim to deepen my understanding of:</i></p>
 <ul>
   <li>
-    Building and structuring applications with <strong>React.js</strong>.
+    Building and structuring applications with <strong>Next.js</strong>.
   </li>
   <li>
     Leveraging <strong>TypeScript</strong> for enhanced code reliability
