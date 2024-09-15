@@ -5,6 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import Modal from "@/components/Modal";
 import Loading from "@/components/Loading";
+import FeedPhotos from "@/components/FeedPhotos";
 
 interface IPictures {
   createdAt: Date;
@@ -17,30 +18,36 @@ interface IPictures {
 
 export default function Home() {
   const [pictures, setAllpictures] = useState<IPictures[]>([]);
-  const [loadingPictures, setLoadingPictures] = useState(true);
+  const [wait, setWait] = useState(false);
 
-  const [currentPage, setCurrentPage] = useState<number[]>([0]);
+  const [pages, setPages] = useState<number[]>([0]);
   const [currentPictureId, setCurrentPictureId] = useState("");
 
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // https://dogsapi.origamid.dev/json/api/photo/?_page=1&_total=6&_user=0
-    async function fetchPictures() {
-      try {
-        const data = (await (
-          await axios.get("http://localhost:3000/api/pictures/")
-        ).data.pictures) as IPictures[];
+    let wait = false;
+    function infiniteScroll() {
+      const scroll = window.scrollY;
+      const height = document.body.offsetHeight - window.innerHeight;
 
-        setAllpictures(data);
-        setLoadingPictures(false);
-      } catch (error) {
-        console.error("Error on fetch pictures: ", error);
+      if (scroll > height * 0.75 && !wait && pages.length < 2) {
+        setPages((pages) => [...pages, pages.length * 6]);
+        // wait = true;
+
+        // setTimeout(() => {
+        //   wait = false;
+        // }, 500);
       }
     }
 
-    fetchPictures();
-  }, []);
+    window.addEventListener("wheel", infiniteScroll);
+    window.addEventListener("scroll", infiniteScroll);
+    return () => {
+      window.removeEventListener("wheel", infiniteScroll);
+      window.removeEventListener("scroll", infiniteScroll);
+    };
+  }, [pages]);
 
   function handleModal(pictureId: string) {
     setCurrentPictureId(pictureId);
@@ -54,33 +61,11 @@ export default function Home() {
   return (
     <main>
       <Header />
-      {loadingPictures && (
-        <div className="w-dvw h-dvh fixed bg-[rgba(0,0,0,32%)] top-0 bottom-0 left-0 right-0 flex items-center justify-center">
-          <Loading />
-        </div>
-      )}
-      <div className="grid grid-cols-3 gap-3 justify-center max-w-[50rem] mx-auto pb-8 animate-transition-page-up">
-        {pictures.map((picture, index) => {
-          return (
-            <div
-              key={picture.id}
-              className="w-full h-full"
-              style={{
-                gridColumn: index === 1 ? "4/2" : "auto",
-                gridRow: index === 1 ? "span 2" : "auto",
-              }}
-              onClick={() => handleModal(picture.id)}
-            >
-              <img
-                src={picture.picture_url}
-                alt={picture.title}
-                className="w-full h-full object-cover rounded cursor-pointer hover:brightness-75 transition ease-in-out duration-150"
-                draggable={false}
-              />
-            </div>
-          );
-        })}
-      </div>
+      {pages.map((page) => {
+        return (
+          <FeedPhotos key={page} currentPage={page} handleModal={handleModal} />
+        );
+      })}
       {showModal && (
         <Modal pictureId={currentPictureId} closeModal={closeModal} />
       )}

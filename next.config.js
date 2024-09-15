@@ -3,9 +3,15 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'dogsapi.origamid.dev',
+        hostname: 'firebasestorage.googleapis.com',  // Removed the extra slashes
         port: '',
-        pathname: '/wp-content/uploads/**'
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',  // Removed the extra slashes
+        port: '',
+        pathname: '/**'
       },
     ],
   },

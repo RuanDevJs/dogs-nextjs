@@ -12,9 +12,19 @@ interface Payload {
 }
 
 export async function GET(req: NextRequest) {
+  const page = req.nextUrl.searchParams.get('page');
+  const parsedPage = Number(page);
   const prismaPicture = await prismaClient.picture.findMany({
-    skip: 0,
-    take: 6
+    skip: parsedPage,
+    take: 6,
+    orderBy: {
+      user_id: 'asc',
+    },
+    // include: {
+    //   User: {
+    //     select: { avatar_url: true}
+    //   }
+    // }
   });
 
   return NextResponse.json(

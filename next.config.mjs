@@ -1,13 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    path: 'https://dogsapi.origamid.dev/wp-content/uploads/**',
+    path: 'https://firebasestorage.googleapis.com/**',
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'dogsapi.origamid.dev',  // Removed the extra slashes
+        hostname: 'firebasestorage.googleapis.com',  // Removed the extra slashes
         port: '',
-        pathname: '/wp-content/uploads/**'
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',  // Removed the extra slashes
+        port: '',
+        pathname: '/**'
       },
     ],
   }

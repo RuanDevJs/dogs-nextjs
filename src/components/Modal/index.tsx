@@ -35,7 +35,7 @@ export default function Overlay({ pictureId, closeModal }: IProps) {
       } catch (error) {
         console.error("Could not fetch picture");
       } finally {
-        setLoadingPicture(false);
+        setTimeout(() => setLoadingPicture(false), 500);
       }
     }
     fetchPicture();

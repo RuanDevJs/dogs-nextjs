@@ -26,7 +26,6 @@ export default function Modal({ data }: IPicture) {
           Por @{data.username} |{" "}
           {date.toLocaleString("pt-br", {
             dateStyle: "long",
-            // timeStyle: "short",
           })}
         </span>
       </div>

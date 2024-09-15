@@ -66,7 +66,8 @@ const config: Config = {
       animation: {
         "transition-page-up": "slideDownFromUp .52s forwards",
         "transition-page-down": "slideUpFromDown .52s forwards",
-        "loading-effect": "loadingEffect .62s alternate infinite"
+        "loading-effect": "loadingEffect .62s alternate infinite",
+        "animate-feed": "slideDownFromUp .7s forwards"
       },
     },
   },
