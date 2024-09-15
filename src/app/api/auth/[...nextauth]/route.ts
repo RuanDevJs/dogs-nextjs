@@ -11,7 +11,7 @@ export const auth: NextAuthOptions = {
       authorization: {
         params: {
           scope:
-            "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",
+            `${process.env.GOOGLE_SCOPE_USER_EMAIL} ${process.env.GOOGLE_SCOPE_USER_PROFILE}`,
         },
       },
       profile: (profile: GoogleProfile) => {
@@ -31,7 +31,7 @@ export const auth: NextAuthOptions = {
         account &&
         account.scope &&
         !account.scope.includes(
-          "https://www.googleapis.com/auth/userinfo.email"
+          process.env.GOOGLE_SCOPE_USER_EMAIL!
         )
       ) {
         return "/register/complete-auth?error=error";

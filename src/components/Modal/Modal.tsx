@@ -11,11 +11,11 @@ export default function Modal({ data }: IPicture) {
   const date = new Date(data.createdAt);
   return (
     <div className="h-5/6 w-3/5 m-auto grid grid-cols-2 bg-white rounded-lg overflow-hidden box-border gap-5 animate-transition-page-up">
-      <div className="rounded-lg">
+      <div className="rounded-lg h-full w-full overflow-hidden">
         <img
           src={data.picture_url}
           alt=""
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover overflow-hidden"
         />
       </div>
       <div className="w-full py-5">
