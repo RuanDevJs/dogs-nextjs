@@ -24,9 +24,8 @@ export default function Account() {
     async function getPicturesFromUserId() {
       try {
         if (sessionUser && sessionUser.id) {
-          const response = await api.get(`/pictures/${sessionUser.id}`);
+          const response = await api.get(`/pictures/user/${sessionUser.id}`);
           const responseData = response.data.pictures as IPictures[];
-          console.log(responseData);
 
           setPictures(responseData);
         }

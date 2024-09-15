@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
-import { auth } from "../../auth/[...nextauth]/route";
-import { ERROR_STATUS, SUCCESS_STATUS  } from "../config";
+import { auth } from "../../../auth/[...nextauth]/route";
+import { ERROR_STATUS, SUCCESS_STATUS  } from "../../config";
 
 import { prismaClient } from "@/app/lib/prisma";
 

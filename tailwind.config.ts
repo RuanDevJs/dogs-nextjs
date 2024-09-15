@@ -52,10 +52,21 @@ const config: Config = {
             transform: "translate3d(0, 0px, 0)",
           },
         },
+        loadingEffect: {
+          from: {
+            opacity: "0.72",
+            transform: "translate3d(0, -5px, 0)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translate3d(0, 0px, 0)",
+          },
+        },
       },
       animation: {
         "transition-page-up": "slideDownFromUp .52s forwards",
         "transition-page-down": "slideUpFromDown .52s forwards",
+        "loading-effect": "loadingEffect .62s alternate infinite"
       },
     },
   },

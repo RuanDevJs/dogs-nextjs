@@ -12,12 +12,10 @@ interface Payload {
 }
 
 export async function GET(req: NextRequest) {
-  console.log("prismaPicture")
   const prismaPicture = await prismaClient.picture.findMany({
     skip: 0,
     take: 6
   });
-
 
   return NextResponse.json(
     { pictures: [...prismaPicture] },

@@ -38,7 +38,6 @@ export function PrismaAdapter(): Adapter {
     },
 
     async getUser(id) {
-      console.log("getUser");
 
       const user = await prisma.user.findUnique({
         where: {
@@ -59,7 +58,6 @@ export function PrismaAdapter(): Adapter {
     },
 
     async getUserByEmail(email) {
-      console.log("email");
       const user = await prisma.user.findUnique({
         where: {
           email,
@@ -117,7 +115,6 @@ export function PrismaAdapter(): Adapter {
         },
       });
 
-      console.log("Método updateUser da função PrismaAdapter ativado");
 
       return {
         id: updatedUser.id,
